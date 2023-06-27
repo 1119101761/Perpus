@@ -1,14 +1,17 @@
 import React from 'react';
-import { ScrollView, View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native';
+import { ScrollView, View, Text, TouchableOpacity, StyleSheet, Image, TextInput, SafeAreaView } from 'react-native';
 import { Ionicons, MaterialIcons } from '@expo/vector-icons';
+import Constants from 'expo-constants';
 
 export default function BerandaPengguna({ navigation }) {
+  const statusBarHeight = Constants.statusBarHeight;
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
+
       <View style={styles.buttonContainer1}>
-          <Image
-            source={require('../assets/logo.png')}
-            style={styles.logo}
+      <TextInput
+            style={styles.input}
+            placeholder="Cari"
           />
       </View>
       <ScrollView contentContainerStyle={styles.contentContainer}>
@@ -70,7 +73,7 @@ export default function BerandaPengguna({ navigation }) {
           </View>
         </TouchableOpacity>
       </View>
-    </View>
+    </SafeAreaView>
   );
 }
 
@@ -80,17 +83,11 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     width: '100%',
     height: '100%', 
+    paddingTop: Constants.statusBarHeight,
   },
   contentContainer: {
     alignItems: 'center',
     paddingVertical: 0,
-  },
-  input: {
-    borderWidth: 1,
-    borderColor: 'grey',
-    borderRadius: 4,
-    padding: 8,
-    marginBottom: 12,
   },
   titleContainer: {
     textAlign: 'center',
@@ -112,13 +109,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     //flexDirection: 'row',
     width: '100%',
-    height: 120,
+    height: 75,
     backgroundColor: '#4c1518',
-  },
-  logo: {
-
-    width: 150,
-    height: 150,
   },
   buttonContainer2: {
     flexDirection: 'row',
@@ -126,8 +118,7 @@ const styles = StyleSheet.create({
     height: 75,
     backgroundColor: '#4c1518',
     justifyContent: 'space-between',
-    paddingHorizontal: 20,
-    paddingBottom: 10,
+   
   },
   button: {
     flex: 1,
@@ -147,16 +138,22 @@ const styles = StyleSheet.create({
     marginTop: 5, // Jarak antara ikon dan teks
   },
   MenuBeranda: {
-    height: 200,
+    height: 300,
     width: '100%',
     marginBottom: 0,
   },
   input: {
     borderWidth: 1,
+    width: '75%',
+    //weight: 50,
     borderColor: 'grey',
-    borderRadius: 4,
-    padding: 8,
-    marginBottom: 12,
+    borderRadius: 8,
+    padding: 5,
+    marginTop: 18,
+    backgroundColor: 'white',
+    borderColor: 'black',
+    fontSize: 15,
+    //fontWeight: 'bold',
   },
   
 });

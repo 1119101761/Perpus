@@ -1,36 +1,57 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, ImageBackground, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 const LoginPage = () => {
   const navigation = useNavigation();
-  const handleLogin = () => {
+  const [email, setEmail] = useState('');
+  const [kataSandi, setKataSandi] = useState('');
 
-    navigation.navigate('BerandaPengguna');
+  const handleLogin = async () => {
+    try {
+      const response = await fetch('http://192.168.1.6:3000/api/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: email,
+          kataSandi: kataSandi,
+        }),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        console.log(data.message);
+        navigation.navigate('BerandaPengguna');
+      } else {
+        console.error('Email dan password yang anda masukan salah');
+      }
+    } catch (error) {
+      console.error('Kesalahan saat menghubungi server:', error);
+    }
   };
 
   return (
     <View style={styles.container}>
-      <ImageBackground
-        source={require('../assets/roti1.jpg')}
-        style={styles.backgroundImage}
-      >
+      <ImageBackground source={require('../assets/roti1.jpg')} style={styles.backgroundImage}>
         <View style={styles.logoContainer}>
-          <Image
-            source={require('../assets/logo.png')}
-            style={styles.logo}
-          />
+          <Image source={require('../assets/logo.png')} style={styles.logo} />
         </View>
         <View style={styles.formContainer}>
           <Text style={styles.title}>Masuk</Text>
           <TextInput
             style={styles.input}
-            placeholder="Nama"
+            placeholder="Email"
+            value={email}
+            onChangeText={setEmail}
           />
           <TextInput
             style={styles.input}
             placeholder="Kata Sandi"
-
+            secureTextEntry
+            value={kataSandi}
+            onChangeText={setKataSandi}
           />
           <TouchableOpacity style={styles.button} onPress={handleLogin}>
             <Text style={styles.buttonText}>Masuk</Text>
@@ -56,7 +77,7 @@ const styles = StyleSheet.create({
   logo: {
     width: 240,
     height: 240,
-    marginBottom: 10,
+    marginBottom: 0,
   },
   title: {
     fontSize: 24,
@@ -97,4 +118,5 @@ const styles = StyleSheet.create({
     resizeMode: 'cover',
   },
 });
+
 export default LoginPage;

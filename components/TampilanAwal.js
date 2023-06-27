@@ -15,7 +15,7 @@ export default function TampilanAwal({ navigation }) {
         <View style={styles.buttonContainer}>
           <TouchableOpacity
             style={styles.button}
-            onPress={() => navigation.navigate('Masuk')}>
+            onPress={() => navigation.navigate('Login')}>
             <Text style={styles.buttonText}>Masuk</Text>
           </TouchableOpacity>
           <TouchableOpacity
