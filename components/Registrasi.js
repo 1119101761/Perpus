@@ -1,38 +1,59 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, ImageBackground, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-const RegistrasiScreen = () => {
+const Registrasi = () => {
   const navigation = useNavigation();
-  const handleLogin = () => {
+  const [email, setEmail] = useState('');
+  const [kataSandi, setKataSandi] = useState('');
 
-    navigation.navigate('Registrasi');
+  const handleRegistrasi = async () => {
+    try {
+      const response = await fetch('http://localhost:3000/api/registrasi', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: email,
+          kataSandi: kataSandi,
+        }),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        console.log(data.message);
+        navigation.navigate('Masuk');
+      } else {
+        console.error('Pendaftaran gagal');
+      }
+    } catch (error) {
+      console.error('Kesalahan saat menghubungi server:', error);
+    }
   };
 
   return (
     <View style={styles.container}>
-      <ImageBackground
-        source={require('../assets/roti1.jpg')}
-        style={styles.backgroundImage}
-      >
+      <ImageBackground source={require('../assets/roti1.jpg')} style={styles.backgroundImage}>
         <View style={styles.logoContainer}>
-          <Image
-            source={require('../assets/logo.png')}
-            style={styles.logo}
-          />
+          <Image source={require('../assets/logo.png')} style={styles.logo} />
         </View>
         <View style={styles.formContainer}>
           <Text style={styles.title}>Daftar</Text>
           <TextInput
             style={styles.input}
-            placeholder="Nama"
+            placeholder="Email"
+            value={email}
+            onChangeText={setEmail}
           />
           <TextInput
             style={styles.input}
             placeholder="Kata Sandi"
-
+            secureTextEntry
+            value={kataSandi}
+            onChangeText={setKataSandi}
           />
-          <TouchableOpacity style={styles.button} onPress={handleLogin}>
+          <TouchableOpacity style={styles.button} onPress={handleRegistrasi}>
             <Text style={styles.buttonText}>Daftar</Text>
           </TouchableOpacity>
         </View>
@@ -97,4 +118,5 @@ const styles = StyleSheet.create({
     resizeMode: 'cover',
   },
 });
-export default RegistrasiScreen;
+
+export default Registrasi;
