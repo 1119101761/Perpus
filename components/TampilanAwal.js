@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, ImageBackground, Image,} from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, ImageBackground, Image, } from 'react-native';
 
 export default function TampilanAwal({ navigation }) {
   return (
@@ -10,12 +10,13 @@ export default function TampilanAwal({ navigation }) {
         <View style={styles.logoContainer}>
           <Image
             source={require('../assets/logo.png')}
-            style={styles.logo}/>
+            style={styles.logo} />
         </View>
         <View style={styles.buttonContainer}>
           <TouchableOpacity
             style={styles.button}
-            onPress={() => navigation.navigate('Login')}>
+            onPress={() => navigation.navigate('Login')}
+            >
             <Text style={styles.buttonText}>Masuk</Text>
           </TouchableOpacity>
           <TouchableOpacity

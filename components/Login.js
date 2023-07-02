@@ -9,7 +9,7 @@ const LoginPage = () => {
 
   const handleLogin = async () => {
     try {
-      const response = await fetch('http://192.168.1.6:3000/api/login', {
+      const response = await fetch('http://192.168.1.4:3000/api/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -23,7 +23,12 @@ const LoginPage = () => {
       if (response.ok) {
         const data = await response.json();
         console.log(data.message);
-        navigation.navigate('BerandaPengguna');
+
+        if (email === 'admin' && kataSandi === 'admin') {
+          navigation.navigate('BerandaAdmin');
+        } else {
+          navigation.navigate('BerandaPengguna');
+        }
       } else {
         console.error('Email dan password yang anda masukan salah');
       }

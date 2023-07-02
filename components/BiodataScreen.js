@@ -2,11 +2,10 @@ import React from 'react';
 import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-const MahasiswaScreen = ({navigation}) => {
+const MahasiswaScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Form Pengisian Biodata</Text>
-  
     </View>
   );
 };

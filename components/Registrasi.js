@@ -9,7 +9,7 @@ const Registrasi = () => {
 
   const handleRegistrasi = async () => {
     try {
-      const response = await fetch('http://192.168.1.6:3000/api/registrasi', {
+      const response = await fetch('http://192.168.1.4:3000/api/registrasi' , {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -42,13 +42,13 @@ const Registrasi = () => {
           <Text style={styles.title}>Daftar</Text>
           <TextInput
             style={styles.input}
-            placeholder="Email"
+            placeholder="Masukan Email"
             value={email}
             onChangeText={setEmail}
           />
           <TextInput
             style={styles.input}
-            placeholder="Kata Sandi"
+            placeholder="Masukan Kata Sandi"
             secureTextEntry
             value={kataSandi}
             onChangeText={setKataSandi}

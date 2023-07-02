@@ -9,10 +9,10 @@ export default function BerandaPengguna({ navigation }) {
     <SafeAreaView style={styles.container}>
 
       <View style={styles.buttonContainer1}>
-      <TextInput
-            style={styles.input}
-            placeholder="Cari"
-          />
+        <TextInput
+          style={styles.input}
+          placeholder="Cari"
+        />
       </View>
       <ScrollView contentContainerStyle={styles.contentContainer}>
         <Image style={styles.MenuBeranda} source={require('../assets/RotiMalamKerak.jpg')} />
@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: 'white',
     width: '100%',
-    height: '100%', 
+    height: '100%',
     paddingTop: Constants.statusBarHeight,
   },
   contentContainer: {
@@ -118,7 +118,7 @@ const styles = StyleSheet.create({
     height: 75,
     backgroundColor: '#4c1518',
     justifyContent: 'space-between',
-   
+
   },
   button: {
     flex: 1,
@@ -155,5 +155,5 @@ const styles = StyleSheet.create({
     fontSize: 15,
     //fontWeight: 'bold',
   },
-  
+
 });

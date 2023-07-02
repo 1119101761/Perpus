@@ -17,11 +17,11 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen name="Tampilan" component={TampilanAwal} options={{ headerShown: false }} />
-        <Stack.Screen name="Login"component={Login} options={{ headerShown: false }}/>
+        <Stack.Screen name="Login" component={Login} options={{ headerShown: false }} />
         <Stack.Screen name="Registrasi" component={Registrasi} options={{ headerShown: false }} />
         <Stack.Screen name="BerandaPengguna" component={BerandaPengguna} options={{ headerShown: false }} />
-        <Stack.Screen name="BerandaAdmin"component={BerandaAdmin} options={{ headerShown: false }}/>
+        <Stack.Screen name="BerandaAdmin" component={BerandaAdmin} options={{ headerShown: false }} />
       </Stack.Navigator>
-    </NavigationContainer> 
+    </NavigationContainer>
   );
 }
